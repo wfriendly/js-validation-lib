@@ -1,2 +1,13 @@
 # getCode
 getCode.js是一款用于前端开发的时候，获取验证码的一个60秒等待体验的js插件。 支持回调函数，兼容ie6+,firefox,chrome,safari,iphone, ipad
+
+带参数启用插件
+*$('#getcode2').getcode({
+		'time':6, //自定义时长
+		'before':function(){
+			alert('开始！');	 //开始时执行的回调函数
+		},
+		'after':function(){
+			alert('结束！');	 //结束时执行的回调函数
+		}					  
+});*
