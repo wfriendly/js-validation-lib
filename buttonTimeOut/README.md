@@ -3,11 +3,11 @@ getCode.js是一款用于前端开发的时候，获取验证码的一个60秒�
 
 #带参数启用插件
 *$('#getcode2').getcode({*
-*	'time':6, //自定义时长*
-*	'before':function(){*
-*		alert('开始！');	 //开始时执行的回调函数*
-*	},*
-*	'after':function(){*
-*		alert('结束！');	 //结束时执行的回调函数*
-*	}*					  
+  *'time':6, //自定义时长*
+  *'before':function(){*
+    *alert('开始！');	 //开始时执行的回调函数*
+  *},*
+  *'after':function(){*
+    *alert('结束！');	 //结束时执行的回调函数*
+  *}*					  
 *});*
