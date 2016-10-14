@@ -1,12 +1,13 @@
 function identityCodeValid(socialNo) {
   
   if (socialNo == "") {
-    showIdCardError("输入身份证号码不能为空!");
+    return ("输入身份证号码不能为空!");
     return (false);
   }
   
-  if (socialNo.length != 15 || socialNo.length != 18) {
-    showIdCardError("输入身份证号码格式不正确!");
+  var len = socialNo.length;
+  if (len != 15 || len != 18) {
+    return ("输入身份证号码位数不正确，当前为" + socialNo.length + "位");
     return (false);
   }
   
@@ -49,14 +50,14 @@ function identityCodeValid(socialNo) {
   };
   
   if (area[parseInt(socialNo.substr(0, 2))] == null) {
-    showIdCardError("身份证号码不正确(地区非法)!");
+    return ("身份证号码不正确(地区非法)!");
     return (false);
   }
   
   if (socialNo.length == 15) {
     pattern = /^\d{15}$/;
     if (pattern.exec(socialNo) == null) {
-      showIdCardError("15位身份证号码必须为数字！");
+      return ("15位身份证号码必须为数字！");
       return (false);
     }
     var birth = parseInt("19" + socialNo.substr(6, 2));
@@ -71,7 +72,7 @@ function identityCodeValid(socialNo) {
       case '10':
       case '12':
         if (day > 31) {
-          showIdCardError('输入身份证号码不格式正确!');
+          return ('输入身份证号码不格式正确!');
           return false;
         }
         break;
@@ -80,30 +81,30 @@ function identityCodeValid(socialNo) {
       case '09':
       case '11':
         if (day > 30) {
-          showIdCardError('输入身份证号码不格式正确!');
+          return ('输入身份证号码不格式正确!');
           return false;
         }
         break;
       case '02':
         if ((birth % 4 == 0 && birth % 100 != 0) || birth % 400 == 0) {
           if (day > 29) {
-            showIdCardError('输入身份证号码不格式正确!');
+            return ('输入身份证号码不格式正确!');
             return false;
           }
         } else {
           if (day > 28) {
-            showIdCardError('输入身份证号码不格式正确!');
+            return ('输入身份证号码不格式正确!');
             return false;
           }
         }
         break;
       default:
-        showIdCardError('输入身份证号码不格式正确!');
+        return ('输入身份证号码不格式正确!');
         return false;
     }
     var nowYear = new Date().getYear();
     if (nowYear - parseInt(birth) < 15 || nowYear - parseInt(birth) > 100) {
-      showIdCardError('输入身份证号码不格式正确!');
+      return ('输入身份证号码不格式正确!');
       return false;
     }
     return (true);
@@ -121,7 +122,7 @@ function identityCodeValid(socialNo) {
     
     
     if (socialNo.charAt(i) < '0' || socialNo.charAt(i) > '9') {
-      showIdCardError("输入身份证号码格式不正确!");
+      return ("输入身份证号码格式不正确!");
       return (false);
     }
     else {
@@ -135,7 +136,7 @@ function identityCodeValid(socialNo) {
     lSum += 10 * Wi[17];
   }
   else if (socialNo.charAt(17) < '0' || socialNo.charAt(17) > '9') {
-    showIdCardError("输入身份证号码格式不正确!");
+    return ("输入身份证号码格式不正确!");
     return (false);
   }
   else {
@@ -147,7 +148,7 @@ function identityCodeValid(socialNo) {
     return true;
   }
   else {
-    showIdCardError("输入身份证号码格式不正确!");
+    return ("输入身份证号码格式不正确!");
     return (false);
   }
 }
